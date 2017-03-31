@@ -8,21 +8,29 @@ namespace RentEstimate
 	
 	public class Estimator
 	{
+		// Stores data information from the txt file 
 		public List<int> houseSizes = new List<int>();
 		public List<int> houseRent = new List<int>();
 		public int numHouses;
+
+
 		public Estimator()
 		{
 			numHouses = 0;
 		}
+
 		public void storeHouse(int size, int rent)
 		{
 			houseSizes.Add(size);
 			houseRent.Add(rent);
 			numHouses++;
 		}
+
 		public double averageCost(double slope)
 		{
+			// Average cost function used is (Sum of (expected - obs)^2) / 2 * (# houses)
+			// Calculates how far each data point is from the
+			// regression line specified by the slope parameter
 			double sumCost = 0;
 			for (int i = 0; i < houseSizes.Count; i++)
 			{
@@ -36,6 +44,7 @@ namespace RentEstimate
 	{
 		public static void Main(string[] args)
 		{
+			// file path of data file 
 			string path = @"/Users/Oh/Projects/RentEstimate/RentEstimate/data.txt";
 
 			Console.WriteLine("Welcome to RentEstimate! This simple program " +
@@ -44,8 +53,11 @@ namespace RentEstimate
 			Console.WriteLine("Enter 'n' to add new housing data, " +
 							  "'e' to get a rent estimate, " +
 							  "and 'q' to exit out of the program");
+			// used to store the character commands of the user
 			StringBuilder userInput = new StringBuilder();
 			userInput.Append(Console.ReadLine());
+
+			// Runs until error or user quits out 
 			while (!userInput.ToString().Equals("q"))
 			{
 				if (userInput.ToString().Equals("n"))
@@ -77,6 +89,8 @@ namespace RentEstimate
 						Console.WriteLine("Invalid house rent");
 						return;
 					}
+
+					// Appends specified info to the end of the data file
 					using (StreamWriter sw = File.AppendText(path)) 
 					{
 						string newData = newHouseSize.ToString() + '\t' + 
@@ -90,8 +104,11 @@ namespace RentEstimate
 					System.IO.StreamReader file = new System.IO.StreamReader(path);
 					line = file.ReadLine();
 					Estimator est = new Estimator();
+
+					// Reads file until EOF
 					while ((line = file.ReadLine()) != null)
 					{
+						// Splits each line by the tab character
 						var dataSplit = line.Split('\t');
 						if (dataSplit.Length != 2)
 						{
@@ -130,9 +147,10 @@ namespace RentEstimate
 						return;
 					}
 
-					// Finds the best-fit regression line for the data
 					double regSlope = 0;
 					double minCost = 0;
+
+					// Calculates which regression line is best for the data 
 					for (double i = 0; i < 100; i += 0.001)
 					{
 						double currCost = est.averageCost(i);
