@@ -1,0 +1,21 @@
+﻿<Properties StartupConfiguration="{038C1619-C1F8-4399-A8CE-FF92D2440B8A}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="RentEstimate/RentEstimate.cs">
+    <Files>
+      <File FileName="RentEstimate/RentEstimate.cs" Line="145" Column="9" NotebookId="1" />
+    </Files>
+    <FloatingWindows>
+      <FloatingWindow WindowId="1" X="0" Y="23" Width="640" Height="480">
+        <Files>
+          <File FileName="../SpeedCamera/SpeedCamera/SpeedCamera.cs" Line="25" Column="3" />
+        </Files>
+      </FloatingWindow>
+    </FloatingWindows>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.RentEstimate PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>
